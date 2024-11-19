@@ -39,7 +39,7 @@ void drawMirror2(int time_pos=0, int doSave=0, int move=1)
     }
   }
 
-  int nTimePoints=20; // orig 20 then 5
+  int nTimePoints=20; // orig 20 then 50
   double tMin=0;
   double tH=(50-tMin)/(nTimePoints-1);
   
@@ -47,14 +47,14 @@ void drawMirror2(int time_pos=0, int doSave=0, int move=1)
   int nMirrXPoints=5;
   double yMirrPos1=-1.5, yMirrPos2=1.5;
   double tPos= tMin + time_pos*tH;
-  double xVelPerTime=2*move;
+  double xVelPerTime=10*move;                    //2 org i 5
   int nBeamTicks=4;
-  //double beamSpeed=(yMirrPos2-yMirrPos1)/(nBeamTicks-1);
+  double beamSpeed=(yMirrPos2-yMirrPos1)/(nBeamTicks-1);
   double xMirrMin=xVelPerTime*(tPos-1), xMirrMax=xVelPerTime*(tPos+1);
   double xMirrH=(nMirrXPoints==1) ? 0 : (xMirrMax-xMirrMin)/(nMirrXPoints-1);
 
-  double beamYLen= (yMirrPos2-yMirrPos1)/8;
-  double nBeamFullSize=50; // number of pixels for the beam
+  double beamYLen= (yMirrPos2-yMirrPos1)/4;               // 8 org  i 4 
+  double nBeamFullSize=60; // number of pixels for the beam   org 20
   TH3D* h3beam= (TH3D*)h3mirror->Clone("h3beam");
   h3beam->SetTitle("h3beam");
   h3beam->Reset();
